@@ -1,0 +1,1 @@
+('1|www.banggood.com|1690|600|https://www.banggood.com/checkout.html||1927x938|1741550400')
