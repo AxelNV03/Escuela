@@ -50,7 +50,7 @@ model.compile(loss='sparse_categorical_crossentropy',
               metrics=['sparse_categorical_accuracy'])
 
 #Entrenamos la red neuronal
-model.fit(patrones, salidas, epochs=500, batch_size=1)
+model.fit(patrones, salidas, epochs=50, batch_size=1)
 
 #Evaluamos el modelo
 scores = model.evaluate(patrones, salidas)
