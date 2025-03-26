@@ -15,7 +15,7 @@ def perceptron(patrones, W, umbral):
             y=(patrones[i][0]*W[0])+(patrones[i][1]*W[1])+umbral
             
             #funcion de activacion (escalon)
-            y = 1 if y > 0 else 0
+            y = 1 if y > 0 else -1
 
             #Salida obtenida != salida esperada
             if y!= patrones[i][2]:
@@ -35,19 +35,24 @@ def perceptron(patrones, W, umbral):
 #-------------------Funcion imferencia-------------------
 def inferencia(entrada, W, umbral):
     y=entrada[0]*W[0]+entrada[1]*W[1]+umbral
-    return 1 if y > 0 else 0
+    return 1 if y > 0 else -1
 #-------------------Funcion -------------------
+def capturar_y_evaluar(W, umbral):
+    x1 = float(input("Ingrese la primera entrada (x1): "))
+    x2 = float(input("Ingrese la segunda entrada (x2): "))
+    entrada = [x1, x2]
+    salida = inferencia(entrada, W, umbral)
+    print(f"Entrada: {entrada}, Salida: {salida}")
+
 
 #Tabla de verdad
 patrones=[
-    [2,0,0],
+    [0,2,-1],
+    [1,4,-1],
+    [2,4,-1],
+    [2,0,1],
     [3,1,1],
-    [4,1,1],
-    [1,0,0],
-    [5,1,1],
-    [6,1,1],
-    [3,0,0],
-    [4,0,0]
+    [4,1,1]
 ]
 
 W=[]
@@ -57,26 +62,29 @@ umbral = random.randint(-5,5)
 iter,umbral=perceptron(patrones, W, umbral)
 
 #Aleatorizar pesos y umbral (w y 0)
-entrada=[6,1]
+entrada=[4,1]
 salida = inferencia(entrada, W, umbral)
 
 
-print("Pesos finales: ",W)
-print("Umbral final: ",umbral)
-print("iteraciones: ",iter)
-print("Entrada: ",entrada)
-print("Salida: ",salida)
-print("\n")
+# print("Pesos finales: ",W)
+# print("Umbral final: ",umbral)
+# print("iteraciones: ",iter)
+# print("Entrada: ",entrada)
+# print("Salida: ",salida)
+# print("\n")
 
-# for i in patrones:
-#     #Aleatorizar pesos y umbral (w y 0)
-#     entrada=[i[0],i[1]]
-#     salida = inferencia(entrada, W, umbral)
+for i in patrones:
+    #Aleatorizar pesos y umbral (w y 0)
+    entrada=[i[0],i[1]]
+    salida = inferencia(entrada, W, umbral)
 
 
-#     print("Pesos finales: ",W)
-#     print("Umbral final: ",umbral)
-#     print("iteraciones: ",iter)
-#     print("Entrada: ",entrada)
-#     print("Salida: ",salida)
-#     print("\n")
+    print("Pesos finales: ",W)
+    print("Umbral final: ",umbral)
+    print("iteraciones: ",iter)
+    print("Entrada: ",entrada)
+    print("Salida: ",salida)
+    print("\n")
+    capturar_y_evaluar(W, umbral)
+    print("\n")
+    

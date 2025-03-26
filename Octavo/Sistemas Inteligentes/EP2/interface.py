@@ -13,7 +13,7 @@ mostrarPoblacion(startPoblation) #Muestra la poblacion inicial
 flag = False    
 generation = 0  
 
-#Mientras no se cumpla la condicion de paro y no se llegue a la generacion 10K
+#Mientrasla generacion sea menor a 200 y promedio del fitness es menor a 0.8
 while(flag != True and generation < 10000): 
     flag = True
     generation += 1
