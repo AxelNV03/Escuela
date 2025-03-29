@@ -1,6 +1,6 @@
 import cv2
 
-imagen = cv2.imread("images/web/Dia24.png")
+imagen = cv2.imread("images/web/Dia24.jpg")
 
 cv2.imshow("Primera Imagen", imagen)
 gray = cv2.cvtColor(imagen, cv2.COLOR_BGR2GRAY)
