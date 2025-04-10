@@ -1,13 +1,76 @@
-#!/usr/bin/bash
+# En el nano
+# Despues usas nano
+sudo nano wgvopn01.conf
+# -----------------------------------------------------
 
-# Definir variables
-comando = "SHOW DATABASES;"
+[Interface]
+Adress = {ipVpnServer}
+PrivateKey = {privateKeyServer}
+ListenPort = {portServer} # 51820
 
-# Iniciar sesión en MariaDB
-spawn sudo mariadb 
+#Rutas para manejar el trafico y tener acceso a la red
+PostUp = sysctl -w net.ipv4.ip_forward=1; iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o {interfazDeRed} -j MASQUERADE
+PostDown = sysctl -w net.ipv4.ip_forward=0; iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o {interfazDeRed} -j MASQUERADE
 
-# Ejecutar un comando
-send "$comando\r"
+# Pc de Emiliano
+[Peer]
+PublicKey = {publicKeyClient}
+AllowedIPs = {ipVpnClient}/ # IP del cliente
+#--------------------------------------
 
-# Mantener la sesión abierta
-interact
+# En el server
+sudo systemctl start wg-quick@wgvopn01
+sudo systemctl status wg-quick@wgvopn01
+
+
+# Configuracion del cliente
+[Interface]
+PrivateKey = {privateKeyClient}
+Address = {ipVpnClient}
+DNS = {dnsServer} # DNS del servidor. 8.8.8.8
+ListenPort = {portClient} # 51820
+
+[Peer]
+PublicKey = {publicKeyServer}
+AllowedIPs = {ipVpnServer}/24 # IP del servidor. 0.0.0.0/0
+Endpoint = {ipRealdelVpnServer}:{portServer} # IP y puerto del servidor
+PersistentKeepalive = 30 # Mantiene la conexion activa
+
+
+# Video Min 56:00
+
+pri -> qCzr70w8Gm18qPfQfFnvU0eq6UPtnnyxl7JVwQeALkQ=
+
+Pu --> w/AlHtmbinSRVbRwIDSbJ3zH4A+jNIqkRtt9vM5Zj3A=
+
+Endpoint = eth0:51820
+
+
+# Llaves del servidor
+IP  --> 18.0.0.1/24
+Pri --> qCzr70w8Gm18qPfQfFnvU0eq6UPtnnyxl7JVwQeALkQ=
+Pub --> w/AlHtmbinSRVbRwIDSbJ3zH4A+jNIqkRtt9vM5Zj3A=
+
+# Llaves del cliente 01
+IP  --> 18.0.0.2/32
+Pri --> aCz2QJ1IOcb79/EvZbDYHkbrpMfvehhJqnEYWbC/l0Q=
+Pub --> UAkSAcSxXTzYyN8yp2VhPwxApEae9la62KgHspMrq3I=
+
+# Llaves del cliente 02
+IP  --> 18.0.0.3/32
+Pri --> ALD8UPzn5gZFMcbYkCISPu5yOF6hj9sph5IfIFxaTm8=
+Pub --> J70TXhtWiZH+0hHTHiEs/i5Z+MIxj5woRg3fMEYmXXA=
+
+# Llaves del cliente 03
+IP  --> 18.0.0.4/32
+Pri --> 6GPfXgoJiHjn4eiKtX+TBnm17HQ6v54LHM5wzeQeGUk=
+Pub --> TpsGalEaNsgB6q5jLM52zlXEO6uLXZhWzBfyD+FCLQM=
+
+# Llaves del cliente 04
+IP  --> 18.0.0.5/32
+Pri --> 4BinQdIv9A2w5PMTkp2+ISJiZZYIAfJewQNnHUlZpVc=
+Pub --> 5DD1mn+laRGKn8oG4Tycep2UwiIqpDSRCYPyTRxtDkM=
+
+
+# Cambiar bash
+chsh -s $(which zsh)

@@ -1,0 +1,19 @@
+# Llaves del servidor
+IP  --> 18.0.0.1/24
+Pri --> qCzr70w8Gm18qPfQfFnvU0eq6UPtnnyxl7JVwQeALkQ=
+Pub --> w/AlHtmbinSRVbRwIDSbJ3zH4A+jNIqkRtt9vM5Zj3A=
+
+# Llaves del cliente 01
+IP  --> 18.0.0.3/32
+Pri --> ALD8UPzn5gZFMcbYkCISPu5yOF6hj9sph5IfIFxaTm8=
+Pub --> J70TXhtWiZH+0hHTHiEs/i5Z+MIxj5woRg3fMEYmXXA=
+
+# Llaves del cliente 02
+IP  --> 18.0.0.4/32
+Pri --> 6GPfXgoJiHjn4eiKtX+TBnm17HQ6v54LHM5wzeQeGUk=
+Pub --> TpsGalEaNsgB6q5jLM52zlXEO6uLXZhWzBfyD+FCLQM=
+
+# Llaves del cliente 03
+IP  --> 18.0.0.5/32
+Pri --> 4BinQdIv9A2w5PMTkp2+ISJiZZYIAfJewQNnHUlZpVc=
+Pub --> 5DD1mn+laRGKn8oG4Tycep2UwiIqpDSRCYPyTRxtDkM=

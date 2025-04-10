@@ -1,0 +1,52 @@
+
+# ---------------------------------------
+# -------------------------------
+# Script para crear un cluster de MariaDB
+# -----------------------------------------------------
+sudo apt -y install sudo mariadb-server mariadb-client
+
+
+#cfg cluster clusterMariaDB
+[galera]
+wsrep_on = ON
+wsrep_cluster_name = {nombreDelCluster}
+wsrep_provider = /usr/lib/galera/libgalera_smm.so
+wsrep_cluster_address = "gcomm://{ipNodo01},...,{ipNodoN}"
+binlog_format = row
+default_storage_engine = InnoDB
+innodb_autoinc_lock_mode = 2
+
+# Allow server to accept connections on all interfaces.
+bind-address = 0.0.0.0
+wsrep_node_address={ipDelHost01}
+
+# -----------------------------------------------------
+# Actividad
+# -----------------------------------------------------
+#{
+    [galera]
+    wsrep_on = ON
+    wsrep_cluster_name = cluster8Adb
+    wsrep_provider = /usr/lib/galera/libgalera_smm.so
+    wsrep_cluster_address = "gcomm://192.168.56.103, 192.168.56.105"  #103 es el nodo Anfitriom y 105 es el nodo cluster
+    binlog_format = row
+    default_storage_engine = InnoDB
+    innodb_autoinc_lock_mode = 2
+    
+    # Allow server to accept connections on all interfaces.
+    bind-address = 0.0.0.0
+    wsrep_node_address=192.168.56.103
+#}
+
+# -----------------------------------------------------
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+# Comentar el bind-address y pega lo de galera al final
+
+#En host Anfitrion
+sudo service mariadb stop
+sudo galera_new_cluster
+
+#En host cluster
+sudo service mariadb restart
+
+# En los dos hosts creas databases para verifcar que sirve
