@@ -1,0 +1,50 @@
+NORMAL
+----------------------------------------------------------------------------
+X           --> Borra el carácter antes del cursor
+x           --> Borra el carácter bajo el cursor
+dd          --> Borra la linea actual
+yy          --> Copia la linea actual
+P           --> Pega despues del cursor
+p           --> Pega antes del cursor
+u           --> Deshacer
+gg          --> Se mueve al inicio del archivo
+d           --> funciona como cortar y como borra tambien
+dw		    --> Borra la palabra incluido el espacio
+d$		    --> Elimina desde el texto actual hasta el final de la linea
+d0		    --> Elimina texto desde el cursor hasta el start de la línea.
+G           --> Se mueve al final del archivo
+<C-r>       --> Rehacer
+w           --> Se coloca al inicio de la palabra
+e           --> Se coloca al final de la palabra 
+g<U/u>ip    --> El Parrafo lo pasa a Mayusc/Minusc
+g<U/u>      --> Alterna la linea entre Mayusc/Minusc
+b           --> Se coloca al inicio de las palabras hacia atras
+ge          --> Al final de las palabras hacia atras
+<<          --> Indenta hacia la izquierda la línea actual
+>>          --> Indenta hacia la derecha la línea actual
+
+VISUAL
+----------------------------------------------------------------------------
+U           --> Convierte a mayusculas lo seleccionado
+~           --> Cambia entre mayusculas y minusculas
+c           --> Borra la seleccion y entra en modo insert
+d           --> Borra la seleccion
+V           --> Selecciona toda la linea en modo Visual
+y           --> Copia lo seleccionado
+p           --> Reemplaza lo seleccionado con el contenido del portapapeles
+J           --> Une las líneas seleccionadas
+
+INSERT
+----------------------------------------------------------------------------
+<C-o>       --> Ejecuta un comando de NORMAL sin salir del modo INSERT
+<C-r>+      --> Inserta contenido del portapapeles en modo insert
+<C-w>       --> Moverse entre paneles
+I           --> Insertar al inicio de la línea
+i           --> Insertar antes del cursor
+A           --> Insertar al final de la línea
+a           --> Insertar después del cursor
+O           --> Nueva línea arriba y entra en insert
+o           --> Nueva línea debajo y entra en insert
+
+
+

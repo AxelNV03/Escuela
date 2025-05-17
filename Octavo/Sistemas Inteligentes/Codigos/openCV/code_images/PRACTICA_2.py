@@ -24,11 +24,10 @@ cv2.imshow("imagen con filtro1", edges1)
 cv2.imshow("imagen con filtro1", edges2)
 
 
-
 # cv2.waitKey(0)
 
 # Linux 
-while True:
+while True: 
     key = cv2.waitKey(1) & 0xFF
     if key == 27:  # 27 es el código ASCII de la tecla Esc
         break

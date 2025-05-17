@@ -12,7 +12,7 @@ ListenPort = {portServer} # 51820
 PostUp = sysctl -w net.ipv4.ip_forward=1; iptables -A FORWARD -i %i -j ACCEPT; iptables -t nat -A POSTROUTING -o {interfazDeRed} -j MASQUERADE
 PostDown = sysctl -w net.ipv4.ip_forward=0; iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o {interfazDeRed} -j MASQUERADE
 
-# Pc de Emiliano
+# Cliente
 [Peer]
 PublicKey = {publicKeyClient}
 AllowedIPs = {ipVpnClient}/ # IP del cliente

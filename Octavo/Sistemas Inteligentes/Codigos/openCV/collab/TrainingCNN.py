@@ -43,6 +43,7 @@ CNN=Sequential()
 CNN.add(Convolution2D(kernels1,kernel1_size,padding="same",input_shape=(altura,anchura,3),activation="relu"))
 CNN.add(MaxPooling2D(pool_size=size_pooling))
 
+
 #Definir la segunda capa convolucional
 CNN.add(Convolution2D(kernels2,kernel2_size,padding="same",input_shape=(altura,anchura,3),activation="relu"))
 CNN.add(MaxPooling2D(pool_size=size_pooling))

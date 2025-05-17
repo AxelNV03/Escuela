@@ -8,7 +8,7 @@ rojoBajo2=np.array([90,100,20],np.uint8)
 rojoAlto2=np.array([100,255,255],np.uint8)
 
 #Leer la imagen
-image = cv2.imread("/home/nv/Escuela/Octavo/Sistemas Inteligentes/Codigos/openCV/images/messi.png")
+image = cv2.imread("/home/nv/Escuela/Octavo/Sistemas Inteligentes/Codigos/openCV/code_images/images/messi.png")
 image=imutils.resize(image,width=640)
 
 #image=cv2.resize(image,(640,480))

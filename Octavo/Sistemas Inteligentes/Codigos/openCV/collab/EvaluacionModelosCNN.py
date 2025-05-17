@@ -34,3 +34,6 @@ if arg_max == 0:
   print("Manzana")
 elif(arg_max==1):
   print("Platano")
+
+
+
